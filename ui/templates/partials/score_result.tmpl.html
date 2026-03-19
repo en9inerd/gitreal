@@ -1,0 +1,64 @@
+{{define "score_result"}}
+<div class="score-card">
+  <div class="score-header">
+    <div class="user-info">
+      <img
+        class="avatar"
+        src="{{.Result.AvatarURL}}&s=80"
+        alt="{{.Result.Username}}"
+      />
+      <div>
+        <h2 class="user-name">
+          {{if .Result.Name}}{{.Result.Name}}{{else}}{{.Result.Username}}{{end}}
+        </h2>
+        <a
+          href="{{.Result.ProfileURL}}"
+          target="_blank"
+          rel="noopener"
+          class="user-link"
+          >@{{.Result.Username}}</a
+        >
+      </div>
+    </div>
+    <div class="score-display">
+      <div
+        class="score-circle score-{{scoreClass .Result.Total .Result.MaxTotal}}"
+      >
+        <span class="score-number">{{.Result.Total}}</span>
+      </div>
+      <span
+        class="verdict verdict-{{scoreClass .Result.Total .Result.MaxTotal}}"
+        >{{.Result.Verdict}}</span
+      >
+    </div>
+  </div>
+
+  <div class="categories">
+    {{range .Result.Categories}}
+    <div class="category">
+      <div class="category-header">
+        <span class="category-icon">{{.Icon}}</span>
+        <span class="category-name">{{.Name}}</span>
+        <span class="category-score">{{.Score.Score}}/{{.Score.MaxScore}}</span>
+      </div>
+      <div class="progress-bar">
+        <div
+          class="progress-fill progress-{{scoreClass .Score.Score .Score.MaxScore}}"
+          style="width: {{pct .Score.Score .Score.MaxScore}}%"
+        ></div>
+      </div>
+      {{if .Score.Details}}
+      <div class="category-details">
+        {{range .Score.Details}}
+        <div class="detail-item">
+          <span class="detail-label">{{.Label}}</span>
+          <span class="detail-score">+{{.Score}}/{{.Max}}</span>
+        </div>
+        {{end}}
+      </div>
+      {{end}}
+    </div>
+    {{end}}
+  </div>
+</div>
+{{end}}

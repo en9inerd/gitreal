@@ -1,0 +1,14 @@
+{{define "base"}}
+<!doctype html>
+<html lang="en">
+  {{template "head" .}}
+  <body>
+    <div class="container">
+      {{block "content" .}}{{end}}
+      <footer>
+        <p>&copy; {{.CurrentYear}} GitReal</p>
+      </footer>
+    </div>
+  </body>
+</html>
+{{end}}

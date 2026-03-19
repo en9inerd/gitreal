@@ -1,0 +1,26 @@
+services:
+  gitreal:
+    build:
+      context: .
+      args:
+        VERSION: ${VERSION:-dev}
+    image: ${DOCKERHUB_USERNAME:-enginerd}/gitreal:${VERSION:-latest}
+    container_name: gitreal
+    restart: unless-stopped
+    ports:
+      - "${GITREAL_PORT:-8080}:${GITREAL_PORT:-8080}"
+    environment:
+      TZ: ${TZ:-America/New_York}
+      GITREAL_PORT: ${GITREAL_PORT:-8080}
+      GITREAL_GITHUB_TOKEN: ${GITREAL_GITHUB_TOKEN:-}
+      GITREAL_VERBOSE: ${GITREAL_VERBOSE:-false}
+      GITREAL_API: ${GITREAL_API:-false}
+    healthcheck:
+      test: ["CMD-SHELL", "wget -q -O /dev/null http://localhost:${GITREAL_PORT:-8080}/health || exit 1"]
+      interval: 30s
+      timeout: 3s
+      retries: 3
+
+networks:
+  default:
+    name: gitreal-network

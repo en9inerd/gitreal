@@ -1,0 +1,33 @@
+{{define "content"}}
+<h1>GitReal</h1>
+<p class="subtitle">
+  Analyze how real a GitHub account is based on activity, repos, and social
+  signals
+</p>
+
+<div id="result"></div>
+
+<form
+  hx-post="/web/score"
+  hx-target="#result"
+  hx-indicator=".htmx-indicator"
+>
+  <div class="form-group">
+    <label for="username">GitHub Username</label>
+    <input
+      type="text"
+      id="username"
+      name="username"
+      required
+      placeholder="e.g., en9inerd"
+      autocomplete="off"
+      autofocus
+    />
+  </div>
+
+  <button type="submit" class="btn">
+    Analyze
+    <span class="htmx-indicator spinner"></span>
+  </button>
+</form>
+{{end}}
