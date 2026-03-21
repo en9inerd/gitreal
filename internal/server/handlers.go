@@ -6,10 +6,10 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/en9inerd/go-pkgs/httpjson"
 	"github.com/en9inerd/gitreal/internal/config"
 	"github.com/en9inerd/gitreal/internal/github"
 	"github.com/en9inerd/gitreal/internal/scorer"
+	"github.com/en9inerd/go-pkgs/httpjson"
 )
 
 func scoreHandler(l *slog.Logger, cfg *config.Config, ghClient *github.Client) http.HandlerFunc {

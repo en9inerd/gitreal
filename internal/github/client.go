@@ -238,8 +238,8 @@ func (c *Client) fetchStarredCount(ctx context.Context, username string) (int, e
 	if matches := linkLastRe.FindStringSubmatch(linkHeader); len(matches) > 1 {
 		lastURL := matches[1]
 		for _, prefix := range []string{"&page=", "?page="} {
-			if idx := strings.Index(lastURL, prefix); idx != -1 {
-				pageStr := lastURL[idx+len(prefix):]
+			if _, after, ok := strings.Cut(lastURL, prefix); ok {
+				pageStr := after
 				if ampIdx := strings.Index(pageStr, "&"); ampIdx != -1 {
 					pageStr = pageStr[:ampIdx]
 				}

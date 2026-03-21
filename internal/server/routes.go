@@ -3,10 +3,10 @@ package server
 import (
 	"log/slog"
 
-	"github.com/en9inerd/go-pkgs/middleware"
-	"github.com/en9inerd/go-pkgs/router"
 	"github.com/en9inerd/gitreal/internal/config"
 	"github.com/en9inerd/gitreal/internal/github"
+	"github.com/en9inerd/go-pkgs/middleware"
+	"github.com/en9inerd/go-pkgs/router"
 )
 
 func registerRoutes(

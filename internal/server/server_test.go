@@ -102,8 +102,8 @@ func TestSecurityHeaders(t *testing.T) {
 
 	headers := map[string]string{
 		"X-Content-Type-Options": "nosniff",
-		"X-Frame-Options":       "DENY",
-		"Referrer-Policy":       "no-referrer",
+		"X-Frame-Options":        "DENY",
+		"Referrer-Policy":        "no-referrer",
 	}
 	for k, v := range headers {
 		if got := w.Header().Get(k); got != v {

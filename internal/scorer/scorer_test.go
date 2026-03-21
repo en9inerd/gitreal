@@ -68,9 +68,9 @@ func TestCalculateVerdicts(t *testing.T) {
 					makeRepo("repo5", "TS", 5, 1, 100, false),
 					makeRepo("repo6", "C", 3, 0, 80, false),
 				},
-				Events: makeEvents(60, 6),
-				Orgs:   []github.Org{{Login: "org1"}, {Login: "org2"}},
-				Gists:  5,
+				Events:  makeEvents(60, 6),
+				Orgs:    []github.Org{{Login: "org1"}, {Login: "org2"}},
+				Gists:   5,
 				Starred: 100,
 			},
 			wantMin: 70,
@@ -196,13 +196,13 @@ func TestAccountAge(t *testing.T) {
 		want int
 	}{
 		{0, 0},
-		{100, 0},                     // ~3.3 months
-		{daysPerHalfYear, 1},         // 6 months
-		{daysPerHalfYear * 2, 2},     // 1 year
-		{daysPerHalfYear * 6, 6},     // 3 years
-		{daysPerHalfYear * 10, 10},   // 5 years
-		{daysPerHalfYear * 15, 15},   // 7.5 years
-		{daysPerHalfYear * 20, 15},   // 10 years, capped at 15
+		{100, 0},                   // ~3.3 months
+		{daysPerHalfYear, 1},       // 6 months
+		{daysPerHalfYear * 2, 2},   // 1 year
+		{daysPerHalfYear * 6, 6},   // 3 years
+		{daysPerHalfYear * 10, 10}, // 5 years
+		{daysPerHalfYear * 15, 15}, // 7.5 years
+		{daysPerHalfYear * 20, 15}, // 10 years, capped at 15
 	}
 
 	for _, tt := range tests {
