@@ -18,11 +18,11 @@ GitReal fetches public GitHub data for a given username (profile, repositories, 
 | Social Proof | 15% | Followers, follower ratio, orgs, gists, starred repos |
 | Diversity | 15% | Event type variety, external contributions, ecosystem participation |
 
-The total score (0–100) maps to a verdict:
+The total score (0-100) maps to a verdict:
 
-- **50–100**: Likely Real
-- **20–49**: Low Confidence
-- **0–19**: Likely Fake
+- **50-100**: Likely Real
+- **20-49**: Low Confidence
+- **0-19**: Likely Fake
 
 The formula is designed so no single category can push past 50 alone, accounts must demonstrate breadth across multiple dimensions to pass.
 
